@@ -9,7 +9,7 @@ app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://iridescent-bubblegum-c41511.netlify.app",
   },
 });
 
@@ -19,7 +19,6 @@ io.on("connection", (socket) => {
   //join room
   socket.on("join_room", (data) => {
     socket.join(data);
-    // console.log(`user with id: ${socket.id} in the room ${data}`);
   });
   socket.on("send_message", (data) => {
     socket.to(data.room).emit("received_message", data);
